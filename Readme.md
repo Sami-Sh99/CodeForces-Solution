@@ -1,5 +1,5 @@
 # Why CodeForces Solution
-I created this repo to submit and keep track of the number of solved problems, and for sharing my code with my friends and the community.
+I created this repo to submit and keep track of the number of problems I have solved, and for sharing my code with my friends and the community.
 
 
 # About CodeForces
