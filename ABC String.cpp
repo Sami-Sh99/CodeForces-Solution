@@ -1,4 +1,5 @@
-//https://codeforces.com/problemset/problem/1487/B
+//https://codeforces.com/contest/1494/problem/0
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -20,7 +21,7 @@
 #include <iterator>
 #include <limits>
 #include <tuple>
-
+#include<stack>
 using namespace std;
 
 #define ull unsigned long long int
@@ -49,20 +50,53 @@ bool is_prime(int64_t x) {
     if (x % d == 0) return false;
   }return true;}
  
- 
-int a[100], b[100];
- 
+bool areBracketsBalanced(string expr) 
+{   
+    stack<char> s; 
+    char x; 
+    for (int i = 0; i < expr.length(); i++)  
+    { 
+        if (expr[i] == '(' )
+        { 
+            s.push(expr[i]); 
+            continue; 
+        } 
+        if (s.empty()) 
+            return false; 
+  
+        switch (expr[i]) { 
+        case ')': 
+              
+            x = s.top(); 
+            s.pop(); 
+            break; 
+        } 
+    } 
+    return (s.empty()); 
+} 
+
 int main()
 {
   std::ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int t; cin >> t;
   while(t--){
-      int n,k;
-      cin>>n>>k;
-        k--;
-        int floor = n / 2;
-        cout<<((k + (n % 2) * k / floor) % n + 1)<<endl;
+    string s;
+    cin>>s;
+    vector<vector<char>> cases={ {'(','(',')'},{'(',')','('},{')','(','('},{'(',')',')'},{')','(',')'},{')',')','('} };
+    bool flag=false;
+    for (int i = 0; i < 6; i++)
+    {
+        string st="";
+        for(char c: s){
+            st+=cases[i][c-'A'];
+        }
+        flag=areBracketsBalanced(st);
+        if(flag==true)
+            break;
+    }
+    cout<<(flag?"YES":"NO")<<endl;
+    
   }
     return 0;
 }

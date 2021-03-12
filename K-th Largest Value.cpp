@@ -1,4 +1,5 @@
-//https://codeforces.com/problemset/problem/1487/B
+//https://codeforces.com/contest/1491/problem/0
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -49,20 +50,40 @@ bool is_prime(int64_t x) {
     if (x % d == 0) return false;
   }return true;}
  
- 
-int a[100], b[100];
+
  
 int main()
 {
   std::ios::sync_with_stdio(false);
   cin.tie(nullptr);
-  int t; cin >> t;
-  while(t--){
-      int n,k;
-      cin>>n>>k;
-        k--;
-        int floor = n / 2;
-        cout<<((k + (n % 2) * k / floor) % n + 1)<<endl;
-  }
+  int a[100010];
+    int n,q,l=0;
+    cin>>n>>q;
+    for (int i = 0; i < n; i++)
+    {
+        cin>>a[i];
+        l+=a[i];
+    }
+    for (int i = 0; i < q; i++)
+    {
+        int x,y;
+        cin>>x>>y;
+        if(x==1){
+            if(a[y-1]==0){
+                a[y-1]=1;
+                l++;
+            }
+            else{
+                a[y-1]=0;
+                l--;
+            }
+        }
+        else{
+            cout<<(l>=y)<<endl;
+        }
+    }
+    
+    
+
     return 0;
 }
